@@ -74,10 +74,22 @@ WSGI_APPLICATION = 'MyShtuff.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'myshtuff',
+#     }
+# }
+
+# Nathan Pc database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myshtuff',
+        'USER': 'postgres',
+        'PASSWORD': 'sei',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
 
