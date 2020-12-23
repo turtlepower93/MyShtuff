@@ -22,8 +22,7 @@
                   <li><a href="{% url 'home' %}">Home</a></li>
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'home' %}">My Profile</a></li>
-                  <li><a href="{% url 'home' %}">My Lists</a></li>
-                  <li><a href="{% url 'home' %}">Create an Item</a></li>
+                  <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
                   <li><a href="{% url 'logout' %}">Log Out</a></li>
                   {% else %}
                   <li><a href="{% url 'login' %}">Log In</a></li>
