@@ -80,6 +80,18 @@ DATABASES = {
     }
 }
 
+# # Nathan Pc database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'catcollector',
+#         'USER': 'postgres',
+#         'PASSWORD': 'sei',
+#         'HOST': 'localhost',
+#         'PORT': ''
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
