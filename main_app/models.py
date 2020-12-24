@@ -12,8 +12,9 @@ class ShtuffList(models.Model):
 
     def __str__(self):
         return self.name
-    
-    # def get_absolute_url(self)
+       
+    def get_absolute_url(self):
+        return reverse('shtuff_lists_index')
 
 class Shtuff(models.Model):
     name = models.CharField(max_length=100)
