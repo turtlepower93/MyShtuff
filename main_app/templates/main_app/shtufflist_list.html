@@ -10,6 +10,9 @@
             <img class="responsive-img card-panel" src="{{ list.image }}" alt="No Image!">
             <span class="card-title">{{ list.name }}</span>
             <p>{{ list.description }}</p>
+            <div class='btn blue'>
+                <a class="white-text" href="{% url 'shtuff_list_update' list.id %}">UPDATE</a>
+            </div>
             <div class='btn red'>
                 <a class="white-text" href="{% url 'shtuff_list_delete' list.id %}">DELETE</a>
             </div>
