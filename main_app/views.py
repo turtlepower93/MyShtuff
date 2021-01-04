@@ -57,3 +57,23 @@ def shtuff_list_detail(request, shtuff_list_id):
     return render(request, 'shtuff_lists/shtuff_lists_detail.html', {
         'shtuff_list' : shtuff_list,
     })
+
+class ShtuffCreate(CreateView):
+    model = Shtuff
+    fields = ['name','description', 'price', 'image', 'url']
+
+    def form_valid(self, form):
+        print('YOLOSWAG')
+        print(self.kwargs['pk'])
+        new_shtuff = form.save(commit = False)
+        new_shtuff.shtuff_list = ShtuffList.objects.get(id=self.kwargs['pk'])
+        new_shtuff.save()
+        return super().form_valid(form)
+
+class ShtuffDelete(LoginRequiredMixin,DeleteView):
+    model = Shtuff
+    success_url = '/shtuff_lists_detail/'
+
+class ShtuffUpdate(LoginRequiredMixin,UpdateView):
+    model = Shtuff
+    fields = ['description', 'price', 'image', 'url']

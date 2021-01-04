@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>My Shtuff</h1>
-<class class="btn"><a class="white-text" href="{% url 'shtuff_list_create' %}">Add Shtuff</a></class>
+<h1>{{shtuff_list.name}}</h1>
+<h5>{{shtuff_list.description}}</h5>
+<class class="btn"><a class="white-text" href="{% url 'shtuff_create' shtuff_list.id %}">Add Shtuff</a></class>
+<br>
 {% for list in shtufflist_list %}
     <a href="{% url 'shtuff_list_detail' list.id %}">
     <div class="card">
@@ -17,11 +19,12 @@
 
 {% endfor %}
 
+
 <div class='btn blue'>
-    <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE</a>
+    <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE LIST</a>
 </div>
 <div class='btn red'>
-    <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE</a>
+    <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE LIST</a>
 </div>
 
 {% endblock %}

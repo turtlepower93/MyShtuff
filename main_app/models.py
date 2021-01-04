@@ -28,3 +28,5 @@ class Shtuff(models.Model):
     def __str__(self):
         return self.name
     
+    def get_absolute_url(self):
+        return reverse('shtuff_list_detail', kwargs={'shtuff_list_id':self.shtuff_list.id})
