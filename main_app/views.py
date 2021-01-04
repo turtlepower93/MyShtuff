@@ -43,3 +43,17 @@ class ShtuffListCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class ShtuffListDelete(LoginRequiredMixin, DeleteView):
+    model = ShtuffList
+    success_url = '/shtuff_lists/'
+
+class ShtuffListUpdate(LoginRequiredMixin, UpdateView):
+    model = ShtuffList
+    fields = ['description','image']
+
+def shtuff_list_detail(request, shtuff_list_id):
+    shtuff_list = ShtuffList.objects.get(id = shtuff_list_id)
+    return render(request, 'shtuff_lists/shtuff_lists_detail.html', {
+        'shtuff_list' : shtuff_list,
+    })
