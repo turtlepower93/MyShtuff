@@ -13,7 +13,15 @@
         </div>
     </div>
     </a>
+    
 
 {% endfor %}
+
+<div class='btn blue'>
+    <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE</a>
+</div>
+<div class='btn red'>
+    <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE</a>
+</div>
 
 {% endblock %}
