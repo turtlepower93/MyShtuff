@@ -54,8 +54,10 @@ class ShtuffListUpdate(LoginRequiredMixin, UpdateView):
 
 def shtuff_list_detail(request, shtuff_list_id):
     shtuff_list = ShtuffList.objects.get(id = shtuff_list_id)
+    shtuffs = Shtuff.objects.filter(shtuff_list=shtuff_list_id)
     return render(request, 'shtuff_lists/shtuff_lists_detail.html', {
         'shtuff_list' : shtuff_list,
+        'shtuffs' : shtuffs
     })
 
 class ShtuffCreate(CreateView):
@@ -63,8 +65,6 @@ class ShtuffCreate(CreateView):
     fields = ['name','description', 'price', 'image', 'url']
 
     def form_valid(self, form):
-        print('YOLOSWAG')
-        print(self.kwargs['pk'])
         new_shtuff = form.save(commit = False)
         new_shtuff.shtuff_list = ShtuffList.objects.get(id=self.kwargs['pk'])
         new_shtuff.save()
@@ -72,7 +72,11 @@ class ShtuffCreate(CreateView):
 
 class ShtuffDelete(LoginRequiredMixin,DeleteView):
     model = Shtuff
-    success_url = '/shtuff_lists_detail/'
+    # def get_success_url(self):
+    #     # Assuming there is a ForeignKey from Comment to Post in your model
+    #     shtuff = self.object.id
+    #     return reverse_lazy( '/shtuff_list_detail/', kwargs={'shtuff.id': shtuff.id})
+    success_url = "/shtuff_lists/"
 
 class ShtuffUpdate(LoginRequiredMixin,UpdateView):
     model = Shtuff

@@ -4,27 +4,34 @@
 <h1>{{shtuff_list.name}}</h1>
 <h5>{{shtuff_list.description}}</h5>
 <class class="btn"><a class="white-text" href="{% url 'shtuff_create' shtuff_list.id %}">Add Shtuff</a></class>
-<br>
-{% for list in shtufflist_list %}
-    <a href="{% url 'shtuff_list_detail' list.id %}">
-    <div class="card">
-        <div class="card-content">
-            <img class="responsive-img card-panel" src="{{ list.image }}" alt="No Image!">
-            <span class="card-title">{{ list.name }}</span>
-            <p>{{ list.description }}</p>
-        </div>
-    </div>
-    </a>
-    
-
-{% endfor %}
-
-
 <div class='btn blue'>
     <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE LIST</a>
 </div>
 <div class='btn red'>
     <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE LIST</a>
 </div>
+<br>
+{% for shtuff in shtuffs %}
+    <a href="{% url 'shtuff_list_detail' shtuff.id %}">
+    <div class="card">
+        <div class="card-content">
+            <img class="responsive-img card-panel" src="{{ shtuff.image }}" alt="No Image!">
+            <span class="card-title">{{ shtuff.name }}</span>
+            <p>{{ shtuff.description }}</p>
+        </div>
+        <div class="card-action">
+            <div class='btn blue'>
+                <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE ITEM</a>
+            </div>
+            <div class='btn red'>
+                <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
+            </div>
+        </div>
+    </div>
+    </a>
+
+    
+
+{% endfor %}
 
 {% endblock %}
