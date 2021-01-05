@@ -1,49 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <h1>{{shtuff_list.name}}</h1>
 <h5>{{shtuff_list.description}}</h5>
-<class class="btn"><a class="white-text" href="{% url 'shtuff_create' shtuff_list.id %}">Add Shtuff</a></class>
 <div class='btn blue'>
     <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE LIST</a>
 </div>
 <div class='btn red'>
     <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE LIST</a>
 </div>
+<hr>
+<class class="btn"><a class="white-text" href="{% url 'shtuff_create' shtuff_list.id %}">Add Shtuff</a></class>
 <br>
 <div class="row">
     {% for shtuff in shtuffs %}
         <div class="col s4 m4">
             <a href="{% url 'shtuff_detail' shtuff.id %}">
             <div class="card">
+                <div class="card-image">
+                    <img class="shtuff-image" src="{{ shtuff.image }}" alt="No Image!">
+                </div>
                 <div class="card-content">
-                    <img class="responsive-img card-panel" src="{{ shtuff.image }}" alt="No Image!">
                     <span class="card-title">{{ shtuff.name }}</span>
                     <p>{{ shtuff.description }}</p>
                 </div>
-
+            </a>
                 <div class="card-action">
                     <div class="row">
-
-                        <div class='col s4 btn blue list_btn'>
-                            <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE</a>
+                        <div class="col s12 m12 l6">
+                            <a class="white-text center" href="{% url 'shtuff_update' shtuff.id %}">
+                                <button class="btn blue list_btn ">UPDATE</button>
+                            </a>
                         </div>
-
-                        <div class="col s1"> </div>
-
-                        <div class='col s4 btn red list_btn'>
-                            <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE</a>
+                        <div class="col s12 m12 l6">
+                            <a class="white-text center" href="{% url 'shtuff_delete' shtuff.id %}">
+                                <button class="btn red list_btn">DELETE</button>
+                            </a>
                         </div>
-                        
                     </div>
                 </div>
-
             </div>
-            </a>
         </div>
     {% endfor %}
 </div>
-
-
-
 {% endblock %}
