@@ -2,9 +2,26 @@
 {% block content %}
 
 <h1>{{shtuff.name}}</h1>
-<h5>{{shtuff.description}}</h5>
-
+<div class="card-action">
+    <!-- <video controls height="250"><source src="{{shtuff.image}}" type="video/mp4"></video> -->
+    <img class='responsive-img' src="{{shtuff.image}}" alt="no image">
+    <h5>Description: {{shtuff.description}}</h5>
+    <h5>Price: ${{shtuff.price}}</h5>
+    <h5><a href="{{shtuff.url}}">Link to Buy</a></h5>
+</div>
+<br>
 
     
+
+
+<div class="card-action">
+    <div class='btn blue'>
+        <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE ITEM</a>
+    </div>
+    <div class='btn red'>
+        <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
+    </div>
+</div>
+<br>
 
 {% endblock %}

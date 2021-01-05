@@ -11,27 +11,39 @@
     <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE LIST</a>
 </div>
 <br>
-{% for shtuff in shtuffs %}
-    <a href="{% url 'shtuff_detail' shtuff.id %}">
-    <div class="card">
-        <div class="card-content">
-            <img class="responsive-img card-panel" src="{{ shtuff.image }}" alt="No Image!">
-            <span class="card-title">{{ shtuff.name }}</span>
-            <p>{{ shtuff.description }}</p>
-        </div>
-        <div class="card-action">
-            <div class='btn blue'>
-                <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE ITEM</a>
-            </div>
-            <div class='btn red'>
-                <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
-            </div>
-        </div>
-    </div>
-    </a>
+<div class="row">
+    {% for shtuff in shtuffs %}
+        <div class="col s4 m4">
+            <a href="{% url 'shtuff_detail' shtuff.id %}">
+            <div class="card">
+                <div class="card-content">
+                    <img class="responsive-img card-panel" src="{{ shtuff.image }}" alt="No Image!">
+                    <span class="card-title">{{ shtuff.name }}</span>
+                    <p>{{ shtuff.description }}</p>
+                </div>
 
-    
+                <div class="card-action">
+                    <div class="row">
 
-{% endfor %}
+                        <div class='col s4 btn blue list_btn'>
+                            <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE</a>
+                        </div>
+
+                        <div class="col s1"> </div>
+
+                        <div class='col s4 btn red list_btn'>
+                            <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE</a>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+
 
 {% endblock %}
