@@ -12,7 +12,7 @@
 </div>
 <br>
 {% for shtuff in shtuffs %}
-    <a href="{% url 'shtuff_list_detail' shtuff.id %}">
+    <a href="{% url 'shtuff_detail' shtuff.id %}">
     <div class="card">
         <div class="card-content">
             <img class="responsive-img card-panel" src="{{ shtuff.image }}" alt="No Image!">

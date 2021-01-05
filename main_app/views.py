@@ -81,3 +81,10 @@ class ShtuffDelete(LoginRequiredMixin,DeleteView):
 class ShtuffUpdate(LoginRequiredMixin,UpdateView):
     model = Shtuff
     fields = ['description', 'price', 'image', 'url']
+
+
+def shtuff_detail(request, shtuff_id):
+    shtuff = Shtuff.objects.get(id = shtuff_id)
+    return render(request, 'shtuff/shtuff_detail.html', {
+        'shtuff' : shtuff,
+    })
