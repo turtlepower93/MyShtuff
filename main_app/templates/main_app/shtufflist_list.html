@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <h1>My Lists</h1>
 <class class="btn"><a class="white-text" href="{% url 'shtuff_list_create' %}">Add List</a></class>
 {% for list in shtufflist_list %}
@@ -10,16 +9,21 @@
             <img class="responsive-img card-panel" src="{{ list.image }}" alt="No Image!">
             <span class="card-title">{{ list.name }}</span>
             <p>{{ list.description }}</p>
-            <div class='btn blue'>
-                <a class="white-text" href="{% url 'shtuff_list_update' list.id %}">UPDATE</a>
-            </div>
-            <div class='btn red'>
-                <a class="white-text" href="{% url 'shtuff_list_delete' list.id %}">DELETE</a>
-            </div>
         </div>
-    </div>
     </a>
-
+            <div class="card-action">
+                <div class="row">
+                    <div class="col s12 m12 l6">
+                        <a class="white-text center" href="{% url 'shtuff_list_update' list.id %}">
+                            <button class="btn blue shtuff-list_btn ">UPDATE</button>
+                        </a>
+                    </div>
+                    <div class="col s12 m12 l6">
+                        <a class="white-text center" href="{% url 'shtuff_list_delete' list.id %}">
+                            <button class="btn red shtuff-list_btn">DELETE</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
 {% endfor %}
-
 {% endblock %}

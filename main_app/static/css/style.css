@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
-  
+
 main {
     flex: 1 0 auto;  
 }
@@ -25,10 +25,39 @@ img {
 }
 
 .list_btn {
-    margin: 10px;
-    text-align: center;
+    width: 100%;
+    min-width: 10vmin;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn > a {
     text-align: center;
+}
+
+
+.sidenav-overlay {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+}
+
+.shtuff-image {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2vmin;
+    max-width: 25vmin;
+    min-width: 20vmin;
+    max-height: 25vmin;
+    min-height: 20vmin;
+}
+
+.row .col.l5 {
+    margin-left: 1vmin;
+}
+.card {
+    margin-top: 8vmin;
+}
+.shtuff-list_btn {
+    width: 50%;
 }

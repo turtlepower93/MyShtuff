@@ -1,27 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>{{shtuff.name}}</h1>
-<div class="card-action">
-    <!-- <video controls height="250"><source src="{{shtuff.image}}" type="video/mp4"></video> -->
-    <img class='responsive-img' src="{{shtuff.image}}" alt="no image">
-    <h5>Description: {{shtuff.description}}</h5>
-    <h5>Price: ${{shtuff.price}}</h5>
-    <h5><a href="{{shtuff.url}}">Link to Buy</a></h5>
-</div>
-<br>
 
+
+
+
+
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col l12">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h1>{{shtuff.name}}</h1>
+                        <img class='responsive-img' src="{{shtuff.image}}" height="600vmax" alt="no image">
+                    </div>
+                    <div class="col l6 s12">
+                        <div class="card-panel" style="max-height: 50vmin; background-color:lightgray;">
+                            <h5>DETAILS</h5>
+                            <hr>
+                            <span class="detail-title"> <strong>Description: </strong> </span>
+                            <br>
+                            <span> {{shtuff.description}} </span>
+                            <hr>
+                            <span class="detail-title"> <strong> Price: </strong> </span>
+                            <span> ${{shtuff.price}} </span>
+                            <hr>
+                            <span class="detail-title"> <strong> Link: </strong> </span>
+                            <span> <a href="{{shtuff.url}}">Buy Now!</a> </span>
+                            <br>
+                            <br>
+                            <div class="card-action" style="position:relative; bottom:0;">
+                                <div class='btn blue'>
+                                    <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE ITEM</a>
+                                </div>
+                                <div class='btn red'>
+                                    <a target="_blank" rel="noopener noreferrer" class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     
 
 
-<div class="card-action">
-    <div class='btn blue'>
-        <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE ITEM</a>
-    </div>
-    <div class='btn red'>
-        <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
-    </div>
-</div>
-<br>
+
 
 {% endblock %}
