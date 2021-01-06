@@ -1,23 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-
-
-
-
-
-<div class="container">
+<div class="container" style="width: 75vmax;">
     <div class="section">
         <div class="row">
             <div class="col l12">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h1>{{shtuff.name}}</h1>
-                        <img class='responsive-img' src="{{shtuff.image}}" height="600vmax" alt="no image">
+                <h1 class="center-align" style="align-content: center;">{{shtuff.name}}</h1>
+                <div class="row" style="margin:auto;">
+                    <div class="col l6 s12" style="display: flex; justify-content: center; align-content: center;">
+                        <img class='responsive-img' src="{{shtuff.image}}" height="600vmin" alt="no image">
                     </div>
                     <div class="col l6 s12">
-                        <div class="card-panel" style="max-height: 50vmin; background-color:lightgray;">
+                        <div class="card-panel" style="max-height: 500vmin; background-color:lightgray;">
                             <h5>DETAILS</h5>
                             <hr>
                             <span class="detail-title"> <strong>Description: </strong> </span>
@@ -28,17 +22,20 @@
                             <span> ${{shtuff.price}} </span>
                             <hr>
                             <span class="detail-title"> <strong> Link: </strong> </span>
-                            <span> <a href="{{shtuff.url}}">Buy Now!</a> </span>
+                            <span> <a target="_blank" rel="noopener noreferrer" href="{{shtuff.url}}">Buy Now!</a> </span>
                             <br>
                             <br>
-                            <div class="card-action" style="position:relative; bottom:0;">
+                            <br>
+                            <br>
+                            <div class="card-action" style="display: flex; justify-content: space-around;">
                                 <div class='btn blue'>
                                     <a class="white-text" href="{% url 'shtuff_update' shtuff.id %}">UPDATE ITEM</a>
                                 </div>
                                 <div class='btn red'>
-                                    <a target="_blank" rel="noopener noreferrer" class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
+                                    <a class="white-text" href="{% url 'shtuff_delete' shtuff.id %}">DELETE ITEM</a>
                                 </div>
                             </div>
+                        
                         </div>
                     </div>
                 </div>
