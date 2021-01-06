@@ -16,21 +16,57 @@
 <class class="btn"><a class="white-text" href="{% url 'shtuff_create' shtuff_list.id %}">Add Shtuff</a></class>
 <br>
 <div class="row">
-        <div class="col s4 m4">
+        <div class="col s12 cards-container">
             <a class="light-green-text text-darken-3" href="{% url 'shtuff_create' shtuff_list.id %}">
                 <div class="card light-green lighten-1">
                     <div class="card-image">
-                        <i class="material-icons center add-shtuff-icon" style="color: white;">post_add</i>
+                        <img class="shtuff-image" src="https://pngimg.com/uploads/plus/plus_PNG106.png" alt="No Image!">
                     </div>
-                    <div class="card-content center-align white-text" >
-                        <p>ADD SHTUFF</p>
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <a class="white-text center" href="{% url 'shtuff_create' shtuff_list.id %}">
+                                    <button class="btn light-green lighten-1 list_btn" style="-webkit-box-shadow: none"> </button>
+                                </a>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <a class="white-text center" href="{% url 'shtuff_create' shtuff_list.id %}">
+                                    <button style="-webkit-box-shadow: none" class="btn light-green lighten-1 list_btn"> </button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </a>
-        </div>
-    {% for shtuff in shtuffs %}
-        <div class="col s4 m4 l">
+            {% for shtuff in shtuffs %}
+            <a href="{% url 'shtuff_detail' shtuff.id %}">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="shtuff-image" src="{{ shtuff.image }}" alt="No Image!">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">{{ shtuff.name }}</span>
+            </a>
+                    </div>
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <a class="white-text center" href="{% url 'shtuff_update' shtuff.id %}">
+                                    <button class="btn ight-green darken-4 list_btn ">UPDATE</button>
+                                </a>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <a class="white-text center" href="{% url 'shtuff_delete' shtuff.id %}">
+                                    <button class="btn red list_btn">DELETE</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+</div>
+    <!-- {% for shtuff in shtuffs %}
             <a href="{% url 'shtuff_detail' shtuff.id %}">
             <div class="card">
                 <div class="card-image">
@@ -56,7 +92,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     {% endfor %}
-</div>
+</div> -->
 {% endblock %}
