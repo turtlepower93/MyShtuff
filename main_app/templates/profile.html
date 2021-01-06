@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Welcome {{user.username}}</h1>
+<h4>Thanks for being our guest since: 
+    <span class="light-green-text text-darken-2"><br>{{user.date_joined}}</span>
+</h4>
+<h4>
+    Last login date: <span class="light-green-text text-darken-2"><br>{{user.last_login}}</span>
+</h4>
+    {% if user.is_superuser %}
+<h1 style="font-size:250px; color:red;">U R SUPER<br>USER</h1>
+{% endif %}
+
+
+{% endblock %}

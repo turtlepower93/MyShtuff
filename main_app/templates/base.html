@@ -17,7 +17,7 @@
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{% url 'home' %}">Home</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'home' %}">My Profile</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
             <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
             <li><a href="{% url 'shtuff_list_create' %}">Add List</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -29,16 +29,15 @@
         <nav class="navbar-fixed">
             <div class="nav-wrapper light-green lighten-1">
                 <div class="brand-logo">
-                    <a class="valign-wrapper" href="{% url 'home' %}">
-                    <img class='logo valign-wrapper' src="{% static 'images/MyShtuffLogo.svg' %}" alt="">
-                    &nbsp;My Shtuff
+                    <a class=" valign-wrapper" href="{% url 'home' %}">
+                    <img class='logo  valign-wrapper' src="{% static 'images/MyShtuffLogo.svg' %}" alt="">&nbsp;<span class="hide-on-med-and-down">My Shtuff</span>
                     </a>
                 </div>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                   <li><a href="{% url 'home' %}">Home</a></li>
                   {% if user.is_authenticated %}
-                  <li><a href="{% url 'home' %}">My Profile</a></li>
+                  <li><a href="{% url 'profile' %}">My Profile</a></li>
                   <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
                   <li><a href="{% url 'shtuff_list_create' %}">Add List</a></li>
                   <li><a href="{% url 'logout' %}">Log Out</a></li>

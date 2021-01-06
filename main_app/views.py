@@ -85,6 +85,11 @@ class ShtuffUpdate(LoginRequiredMixin,UpdateView):
 
 def shtuff_detail(request, shtuff_id):
     shtuff = Shtuff.objects.get(id = shtuff_id)
+    print('boop')
     return render(request, 'shtuff/shtuff_detail.html', {
         'shtuff' : shtuff,
     })
+
+def profile(request):
+    user = request.user
+    return render(request, 'profile.html', {'user': user})
