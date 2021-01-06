@@ -19,6 +19,15 @@ img {
     max-height: 300px;
     min-height: 150px;
 }
+
+.logo {
+    min-width: 50px !important;
+    max-width: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    width: 50px !important;
+}
+
 .list_btn {
     width: 100%;
     min-width: 10vmin;

@@ -28,7 +28,12 @@
         </ul>
         <nav class="navbar-fixed">
             <div class="nav-wrapper light-green lighten-1">
-                <a href="{% url 'home' %}" class="brand-logo">&nbsp;&nbsp;My Shtuff</a>
+                <div class="brand-logo">
+                    <a class="valign-wrapper" href="{% url 'home' %}">
+                    <img class='logo valign-wrapper' src="{% static 'images/MyShtuffLogo.svg' %}" alt="">
+                    &nbsp;My Shtuff
+                    </a>
+                </div>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                   <li><a href="{% url 'home' %}">Home</a></li>
