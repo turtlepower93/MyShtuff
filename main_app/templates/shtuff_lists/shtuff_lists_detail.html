@@ -1,19 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{shtuff_list.name}}</h1>
-<h5>{{shtuff_list.description}}</h5>
-<div class='btn blue'>
-    <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE LIST</a>
-</div>
-<div class='btn red'>
-    <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE LIST</a>
+<div class="flex-btn">
+    <h5>{{shtuff_list.description}}</h5>
+    <div>
+        <div class='btn blue float-right'>
+            <a class="white-text" href="{% url 'shtuff_list_update' shtuff_list.id %}">UPDATE LIST</a>
+        </div>
+        <div class='btn red float-right'>
+            <a class="white-text" href="{% url 'shtuff_list_delete' shtuff_list.id %}">DELETE LIST</a>
+        </div>
+    </div>
 </div>
 <hr>
 <class class="btn"><a class="white-text" href="{% url 'shtuff_create' shtuff_list.id %}">Add Shtuff</a></class>
 <br>
 <div class="row">
-    {% for shtuff in shtuffs %}
         <div class="col s4 m4">
+            <a class="light-green-text text-darken-3" href="{% url 'shtuff_create' shtuff_list.id %}">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="material-icons center add-shtuff-icon">post_add</i>
+                    </div>
+                    <div class="card-content center-align" >
+                        <p>ADD NEW SHTUFF</p>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    {% for shtuff in shtuffs %}
+        <div class="col s4 m4 l">
             <a href="{% url 'shtuff_detail' shtuff.id %}">
             <div class="card">
                 <div class="card-image">
@@ -28,7 +45,7 @@
                     <div class="row">
                         <div class="col s12 m12 l6">
                             <a class="white-text center" href="{% url 'shtuff_update' shtuff.id %}">
-                                <button class="btn blue list_btn ">UPDATE</button>
+                                <button class="btn ight-green darken-4 list_btn ">UPDATE</button>
                             </a>
                         </div>
                         <div class="col s12 m12 l6">
