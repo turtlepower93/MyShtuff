@@ -13,8 +13,20 @@
     <script src="{% static 'javascript/script.js' %}"></script>
 </head>
 <body class="light-green lighten-5">
-    <header class="navbar-fixed">
-        <nav>
+    <header>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'home' %}">My Profile</a></li>
+            <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
+            <li><a href="{% url 'shtuff_list_create' %}">Add List</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+        <nav class="navbar-fixed">
             <div class="nav-wrapper light-green lighten-1">
                 <a href="{% url 'home' %}" class="brand-logo">&nbsp;&nbsp;My Shtuff</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -32,18 +44,6 @@
                 </ul>
             </div>
         </nav>
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'home' %}">My Profile</a></li>
-            <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
-            <li><a href="{% url 'shtuff_list_create' %}">Add List</a></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            {% endif %}
-        </ul>
     </header>
     <main class="container">
         {% block content %}

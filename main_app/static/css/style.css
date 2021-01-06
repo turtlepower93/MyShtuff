@@ -28,11 +28,7 @@ img {
 .btn > a {
     text-align: center;
 }
-.sidenav-overlay {
-    opacity: 0;
-    height: 0px;
-    width: 0px;
-}
+
 .shtuff-image {
     margin-left: auto;
     margin-right: auto;
