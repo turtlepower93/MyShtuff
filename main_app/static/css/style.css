@@ -75,10 +75,6 @@ nav ul a{
   align-items: flex-end;
 }
 
-.cards-container {
-  column-break-inside: avoid;
-}
-
 .cards-container .card {
   display: inline-block;
   overflow: visible;
@@ -129,5 +125,5 @@ nav ul a{
 .tagline {
     text-align:center;
     font-size: 4vh;
-    padding:1.1rem
+    padding:1.1rem;
 }

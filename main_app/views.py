@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ShtuffList, Shtuff
+from django.urls import reverse, reverse_lazy
 
 
 # Create your views here.
@@ -17,18 +18,13 @@ def home(request):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        # This is how to create a 'user' form object
-        # that includes the data from the browser
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            # This will add the user to the database
             user = form.save()
-            # This is how we log a user in via code
             login(request, user)
             return redirect('home')
         else:
             error_message = 'Invalid sign up - try again'
-    # A bad POST or a GET request, so render signup.html with an empty form
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
@@ -52,6 +48,7 @@ class ShtuffListUpdate(LoginRequiredMixin, UpdateView):
     model = ShtuffList
     fields = ['description','image']
 
+@login_required
 def shtuff_list_detail(request, shtuff_list_id):
     shtuff_list = ShtuffList.objects.get(id = shtuff_list_id)
     shtuffs = Shtuff.objects.filter(shtuff_list=shtuff_list_id)
@@ -60,7 +57,7 @@ def shtuff_list_detail(request, shtuff_list_id):
         'shtuffs' : shtuffs
     })
 
-class ShtuffCreate(CreateView):
+class ShtuffCreate(LoginRequiredMixin,CreateView):
     model = Shtuff
     fields = ['name','description', 'price', 'image', 'url']
 
@@ -72,24 +69,22 @@ class ShtuffCreate(CreateView):
 
 class ShtuffDelete(LoginRequiredMixin,DeleteView):
     model = Shtuff
-    # def get_success_url(self):
-    #     # Assuming there is a ForeignKey from Comment to Post in your model
-    #     shtuff = self.object.id
-    #     return reverse_lazy( '/shtuff_list_detail/', kwargs={'shtuff.id': shtuff.id})
-    success_url = "/shtuff_lists/"
+
+    def get_success_url(self):
+        return reverse('shtuff_list_detail', kwargs={'shtuff_list_id': self.object.shtuff_list.id})
 
 class ShtuffUpdate(LoginRequiredMixin,UpdateView):
     model = Shtuff
     fields = ['description', 'price', 'image', 'url']
 
-
+@login_required
 def shtuff_detail(request, shtuff_id):
     shtuff = Shtuff.objects.get(id = shtuff_id)
-    print('boop')
     return render(request, 'shtuff/shtuff_detail.html', {
         'shtuff' : shtuff,
     })
 
+@login_required
 def profile(request):
     user = request.user
     return render(request, 'profile.html', {'user': user})
