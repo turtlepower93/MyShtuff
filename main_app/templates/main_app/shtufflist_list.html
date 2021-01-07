@@ -1,10 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>My Lists</h1>
-<class class="btn"><a class="white-text" href="{% url 'shtuff_list_create' %}">Add List</a></class>
-
+<hr>
 <div class="row">
     <div class="col s12 cards-container">
+        <a class="light-green-text text-darken-3" href="{% url 'shtuff_list_create' %}">
+            <div class="card light-green lighten-1">
+                <div class="card-image">
+                    <img class="shtuff-image" src="https://pngimg.com/uploads/plus/plus_PNG106.png" alt="No Image!">
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col s6 m6 l6">
+                            <a class="white-text center" href="{% url 'shtuff_list_create' %}">
+                                <button class="btn light-green lighten-1 list_btn" style="box-shadow: none"> </button>
+                            </a>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <a class="white-text center" href="{% url 'shtuff_list_create' %}">
+                                <button style="box-shadow:none" class="btn light-green lighten-1 list_btn"> </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
         {% for list in shtufflist_list %}
         <a href="{% url 'shtuff_list_detail' list.id %}">
             <div class="card">
