@@ -70,14 +70,15 @@ img {
 .cards-container {
   column-break-inside: avoid;
 }
+
 .cards-container .card {
   display: inline-block;
   overflow: visible;
 }
 @media only screen and (max-width: 600px) {
   .cards-container {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 1;
   }
 }
