@@ -1,6 +1,68 @@
-{% extends 'base.html' %}
-{% block content %}
-
-<h1>Home</h1>
-
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Shtuff</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'javascript/script.js' %}"></script>
+</head>
+<body class="light-green lighten-5">
+    <header>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
+            <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
+            <li><a href="{% url 'shtuff_list_create' %}">Add List</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+        <nav class="navbar-fixed">
+            <div class="nav-wrapper light-green lighten-1">
+                <div class="brand-logo">
+                    <a class=" valign-wrapper" href="{% url 'home' %}">
+                    <img class='logo  valign-wrapper' src="{% static 'images/MyShtuffLogo.svg' %}" alt="">&nbsp;<span class="hide-on-med-and-down">My Shtuff</span>
+                    </a>
+                </div>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'profile' %}">My Profile</a></li>
+                  <li><a href="{% url 'shtuff_lists_index' %}">My Lists</a></li>
+                  <li><a href="{% url 'shtuff_list_create' %}">Add List</a></li>
+                  <li><a href="{% url 'logout' %}">Log Out</a></li>
+                  {% else %}
+                  <li><a href="{% url 'login' %}">Log In</a></li>
+                  <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                  {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="welcome-text">Welcome to MyShtuff</div>
+        <div class = "iris">
+            <div class = "card transparent z-depth-5">
+            </div>
+         </div>
+         <div class="tagline">Digital Backpack for all your favorite shtuff</div>
+    </main>
+  	<footer class="page-footer light-green lighten-1">
+       <div class="right">All Rights Reserved, &copy; 2021 My Shtuff &nbsp;</div>
+    </footer>
+</body>
+</html>
