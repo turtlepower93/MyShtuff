@@ -1,5 +1,6 @@
 # MyShtuff 
 An app/website to buy/keep track of things for your hobbies and intrests
+
 # Images
 <img src="https://i.imgur.com/tDwLDHN.png">
 <img src="https://i.imgur.com/YyPeGVX.png">
