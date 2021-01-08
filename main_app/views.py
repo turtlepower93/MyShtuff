@@ -31,6 +31,11 @@ def signup(request):
 
 class ShtuffListList(LoginRequiredMixin, ListView):
     model = ShtuffList
+    
+    def get_queryset(self):
+        queryset1 = super(ShtuffListList, self).get_queryset()
+        queryset2 = queryset1.filter(user=self.request.user)
+        return queryset2
 
 class ShtuffListCreate(LoginRequiredMixin, CreateView):
     model = ShtuffList

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log(M)
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, 'left');
+    let elems = document.querySelectorAll('.sidenav');
+    let instances = M.Sidenav.init(elems, 'left');
 });
+
